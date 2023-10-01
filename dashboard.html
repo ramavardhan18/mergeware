@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+        .dashboard {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h2>Login</h2>
+    <form id="loginForm">
+        <label for="username">Username:</label>
+        <input type="text" id="username" required><br>
+        <label for="password">Password:</label>
+        <input type="password" id="password" required><br>
+        <button type="button" onclick="validateLogin()">Login</button>
+    </form>
+
+    <div id="userTypeSelection" class="dashboard">
+        <p>Select user type:</p>
+        <select id="userType">
+            <option value="lender">Lender</option>
+            <option value="borrower">Borrower</option>
+            <option value="admin">Admin</option>
+        </select>
+        <br>
+        <button onclick="submitUserType()">Submit</button>
+    </div>
+
+    <div id="lenderDashboard" class="dashboard">
+        <h3>Lender Dashboard</h3>
+        <p>Welcome, Lender! Here are your lending options and statistics.</p>
+    </div>
+
+    <div id="borrowerDashboard" class="dashboard">
+        <h3>Borrower Dashboard</h3>
+        <p>Hello Borrower! Explore available loans and manage your borrowings.</p>
+    </div>
+
+    <div id="adminDashboard" class="dashboard">
+        <h3>Admin Dashboard</h3>
+        <p>Hello Admin! Access and manage the entire system.</p>
+    </div>
+   
+
+    <script>
+        function validateLogin() {
+            var username = document.getElementById('username').value;
+            var password = document.getElementById('password').value;
+
+            // Simulate successful login (replace with actual authentication logic)
+            if (username === 'ramavardhan' && password === 'pass') {
+                document.getElementById('loginForm').style.display = 'none';
+                document.getElementById('userTypeSelection').style.display = 'block';
+            } else {
+                alert('Invalid login credentials. Try again.');
+            }
+        }
+
+        function submitUserType() {
+            var userType = document.getElementById('userType').value;
+
+            // Hide all dashboards
+            document.querySelectorAll('.dashboard').forEach(function(dashboard) {
+                dashboard.style.display = 'none';
+            });
+
+            // Show the selected dashboard
+            document.getElementById(userType + 'Dashboard').style.display = 'block';
+        }
+    </script>
+</body>
+</html>

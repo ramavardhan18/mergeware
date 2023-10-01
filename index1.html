@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+        #userTypeSelection {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h2>Login</h2>
+    <form id="loginForm">
+        <label for="username">Username:</label>
+        <input type="text" id="username" required><br>
+        <label for="password">Password:</label>
+        <input type="password" id="password" required><br>
+        <button type="button" onclick="validateLogin()">Login</button>
+    </form>
+
+    <div id="userTypeSelection">
+        <p>Select user type:</p>
+        <select id="userType">
+            <option value="lender">Lender</option>
+            <option value="borrower">Borrower</option>
+            <option value="admin">Admin</option>
+        </select>
+        <br>
+        <button onclick="submitUserType()">Submit</button>
+    </div>
+
+    <script>
+        function validateLogin() {
+            var username = document.getElementById('username').value;
+            var password = document.getElementById('password').value;
+
+            // Simulate successful login (replace with actual authentication logic)
+            if (username === 'ramavardhan' && password === 'pass') {
+                document.getElementById('loginForm').style.display = 'none';
+                document.getElementById('userTypeSelection').style.display = 'block';
+            } else {
+                alert('Invalid login credentials. Try again.');
+            }
+        }
+
+        function submitUserType() {
+            var userType = document.getElementById('userType').value;
+
+            // Perform actions based on user type
+            switch (userType) {
+                case 'lender':
+                    alert('Redirecting to Lender Dashboard');
+                    // Implement redirection or other actions for Lender
+                    break;
+                case 'borrower':
+                    alert('Redirecting to Borrower Dashboard');
+                    // Implement redirection or other actions for Borrower
+                    break;
+                case 'admin':
+                    alert('Redirecting to Admin Dashboard');
+                    // Implement redirection or other actions for Admin
+                    break;
+                default:
+                    alert('Invalid user type');
+            }
+        }
+    </script>
+</body>
+</html>
